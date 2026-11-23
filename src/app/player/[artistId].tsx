@@ -33,9 +33,39 @@ export default function PlayerScreen() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView
+        edges={["top", "bottom", "left", "right"]}
         style={{ flex: 1, backgroundColor: theme.colors.background }}
       >
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <Box
+          paddingHorizontal="m"
+          paddingTop="l"
+          paddingBottom="s"
+          width="100%"
+          maxWidth={Math.min(contentWidth, 680)}
+          alignSelf="center"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Touch label="Close player" onPress={close}>
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              gap="xs"
+              paddingHorizontal="s"
+              paddingVertical="s"
+            >
+              <Ionicons
+                name="chevron-down"
+                size={26}
+                color={theme.colors.text}
+              />
+              <Text fontWeight="600">Close</Text>
+            </Box>
+          </Touch>
+          <Text variant="label">SETLIST PREVIEW</Text>
+        </Box>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
           <Box
             padding="m"
             gap="l"
@@ -44,28 +74,6 @@ export default function PlayerScreen() {
             alignSelf="center"
             flex={1}
           >
-            <Box
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Touch label="Close player" onPress={close}>
-                <Box paddingHorizontal="s">
-                  <Ionicons
-                    name="chevron-down"
-                    size={26}
-                    color={theme.colors.text}
-                  />
-                </Box>
-              </Touch>
-              <Box alignItems="center">
-                <Text variant="label">SETLIST PREVIEW</Text>
-                <Text variant="caption">
-                  {artist?.name ?? "Unknown artist"}
-                </Text>
-              </Box>
-              <Box width={48} />
-            </Box>
             {!artist ? (
               <Box gap="s">
                 <Text variant="title">Song not found</Text>
