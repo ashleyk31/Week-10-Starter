@@ -38,8 +38,8 @@ export default function PlayerScreen() {
       >
         <Box
           paddingHorizontal="m"
-          paddingTop="l"
           paddingBottom="s"
+          style={{ paddingTop: theme.spacing.l + 24 }}
           width="100%"
           maxWidth={Math.min(contentWidth, 680)}
           alignSelf="center"
